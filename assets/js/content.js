@@ -186,7 +186,9 @@
         : (tx(g.linkLabel) ? '<span class="g-level__play g-level__play--soon t-mono">' + esc(tx(g.linkLabel)) + '</span>' : '');
       var study = /^case-[a-z0-9-]+\.html$/i.test(tx(g.caseStudy).trim())
         ? '<a class="g-level__play g-level__play--study t-mono" href="' + esc(tx(g.caseStudy).trim()) + '" data-cursor="link">Read more →</a>' : '';
-      action = study + action;
+      var gh = safeUrl(g.github)
+        ? '<a class="g-level__play g-level__play--study g-level__play--gh t-mono" href="' + esc(safeUrl(g.github)) + '" target="_blank" rel="noopener" data-cursor="link">View on GitHub ↗</a>' : '';
+      action = '<div class="g-level__links">' + study + action + gh + '</div>';
       var flip = notes.length ? '<button type="button" class="g-level__flip t-mono t-micro" data-cursor="link" aria-label="' + 'Show developer notes' + '"><span>' + 'Dev note' + '</span> ↻</button>' : '';
       var back = notes.length ? '<div class="g-level__face g-level__back" aria-hidden="true"><p class="g-level__num t-mono t-micro">LV ' + st + ' · ' + 'Design notes' + '</p><h3 class="g-level__title t-h3">' + title + '</h3>' +
         '<ol class="g-level__did">' + notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ol>' +

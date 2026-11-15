@@ -115,7 +115,8 @@ window.SITE_CONTENT = {
         "One resume prefab is bound to ResumeData assets, so short and three-page applications share a single layout.",
         "The demo was narrowed from seven days to three: learn the rules, face a referral, then answer to the auditor, with endings that depend on earlier choices."
       ],
-      "year": "Nov 2026"
+      "year": "Nov 2026",
+      "github": "https://github.com/HongwuLotsuki/Admission-Desk"
     },
     {
       "id": "project-403",
@@ -140,7 +141,8 @@ window.SITE_CONTENT = {
         "The 3D cat view renders to a low-resolution target; room tests moved the lighting from continuous shading to banded tones so furniture reads at that resolution."
       ],
       "role": "Level & narrative design",
-      "year": "Nov 2026"
+      "year": "Nov 2026",
+      "github": "https://github.com/HongwuLotsuki/Project-403"
     },
     {
       "id": "roadtrip",
@@ -166,8 +168,7 @@ window.SITE_CONTENT = {
       "coverImage": "assets/media/roadtrip/cover.jpg",
       "coverAlt": "RoadTrip gameplay prototype: an RV driving along a mountain road with the survival status HUD",
       "coverCaption": "Gameplay prototype",
-      "link": "https://github.com/HongwuLotsuki/Roadtrip",
-      "linkLabel": "View on GitHub ↗"
+      "github": "https://github.com/HongwuLotsuki/Roadtrip"
     },
     {
       "id": "count-me-out",
@@ -194,7 +195,8 @@ window.SITE_CONTENT = {
       "linkLabel": "Play on itch.io ▶",
       "coverImage": "assets/media/count-me-out/cover.jpg",
       "coverAlt": "Count Me Out title artwork with a suited Time Thief and a neon casino logo",
-      "coverCaption": "Title artwork by the team"
+      "coverCaption": "Title artwork by the team",
+      "github": "https://github.com/HongwuLotsuki/Count-Me-Out"
     },
     {
       "id": "drowned-in-yesterday",
@@ -221,7 +223,8 @@ window.SITE_CONTENT = {
         "I built all gameplay code in Unity and C# in a team of seven, including a drowning check matched to the shader's waterline. I used Claude Code in VS Code with DeepSeek as the backend model as an assistant; art, audio and story came from the team."
       ],
       "link": "https://gmhub.com/game/10134",
-      "linkLabel": "View on GMHub ↗"
+      "linkLabel": "View on GMHub ↗",
+      "github": "https://github.com/HongwuLotsuki/Drowned-in-Yesterday"
     }
   ],
   "gameStats": [

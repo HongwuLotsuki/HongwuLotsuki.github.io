@@ -629,8 +629,10 @@ html.js .g-hero__title.is-in { visibility: visible; animation: none; }
   letter-spacing: var(--ls-mono);
   color: var(--c-bone-dim);
 }
+.g-level__links { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 .g-level__actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-3);

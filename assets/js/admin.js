@@ -189,6 +189,7 @@
             fText(g, 'title', 'Game title', { wide: true, onInput: function () { g.id = slug(g.title); retitle(); } }),
             grid([fText(g, 'status', 'Status', { ph: 'In development' }), fText(g, 'genre', 'Genre'), fText(g, 'role', 'My role')]),
             grid([fText(g, 'engine', 'Engine / platform', { ph: 'Godot · GDScript' }), fText(g, 'year', 'Year'), fSelect(g, 'cover', 'Cover animation', COVERS)]),
+            fText(g, 'github', 'GitHub repository', { ph: 'https://github.com/user/repo', wide: true }),
             fText(g, 'coverImage', 'Local cover image', { ph: 'assets/media/project/cover.png', wide: true }),
             grid([fText(g, 'coverAlt', 'Image description'), fText(g, 'coverCaption', 'Cover label')]),
             fText(g, 'desc', 'Description', { area: true, wide: true }),
