@@ -1,0 +1,205 @@
+/* =====================================================================
+   INVENTORY — Design Tokens
+   Inventory · Portfolio template
+   ---------------------------------------------------------------------
+   Owner: Art Director. Do NOT hard-code colors, fonts, easings or
+   z-indexes anywhere else. Use these variables. If a token is missing,
+   ask; don't invent a new hex in a page stylesheet.
+   Dark-first. Per-page accent is switched via body[data-page].
+   ===================================================================== */
+
+:root {
+  /* ---------- 1. COLOR · Base (ink & bone) ---------- */
+  --c-ink:        #0C0D0B;   /* page background — warm near-black */
+  --c-ink-2:      #131411;   /* raised surface (cards, menu slots) */
+  --c-ink-3:      #1C1D19;   /* higher surface / hover surface */
+  --c-ink-4:      #26271F;   /* borders on hover, inactive bars */
+  --c-bone:       #ECE7DC;   /* primary text, paper sections bg */
+  --c-bone-2:     #D9D3C5;   /* paper secondary surface */
+  --c-bone-dim:   #A39F95;   /* secondary text on ink (≈7.4:1) */
+  --c-mute:       #6B685F;   /* decorative labels only (≥ 24px or non-essential) */
+
+  /* Lines — always translucent bone so they sit on any ink surface */
+  --c-line:        rgba(236, 231, 220, 0.12);
+  --c-line-strong: rgba(236, 231, 220, 0.24);
+  --c-line-ink:    rgba(12, 13, 11, 0.14);   /* lines on paper sections */
+
+  /* ---------- 2. COLOR · Signal palette ---------- */
+  --c-laser:      #FF4A1C;   /* BRAND. scanner laser. home + contact accent, alerts */
+  --c-laser-deep: #C7300C;   /* pressed / on-paper laser text (AA on bone) */
+  --c-amber:      #F2B544;   /* kehribar — about accent, "warning" state */
+  --c-phosphor:   #B6F23A;   /* fosfor — games accent, "success/OK" state */
+  --c-cyan:       #43E0C2;   /* warehouse cyan — projects accent, data */
+  --c-violet:     #8A7CFF;   /* RARE use only: "efsanevi" rarity foil hint */
+
+  /* Semantic */
+  --c-ok:       var(--c-phosphor);
+  --c-warn:     var(--c-amber);
+  --c-critical: var(--c-laser);
+
+  /* Rarity tiers (inventory item cards / menu slots) */
+  --rarity-common:    #A39F95;  /* YAYGIN */
+  --rarity-rare:      #43E0C2;  /* RARE */
+  --rarity-epic:      #B6F23A;  /* EPIC */
+  --rarity-legendary: #F2B544;  /* LEGENDARY */
+  --rarity-unique:    #FF4A1C;  /* UNIQUE */
+
+  /* Active accent — overridden per page below. Always use these: */
+  --accent:      var(--c-laser);
+  --accent-rgb:  255, 74, 28;
+  --accent-ink:  var(--c-ink);   /* text color ON an accent fill */
+
+  /* Selection */
+  --c-selection-bg: var(--accent);
+  --c-selection-fg: var(--c-ink);
+
+  /* ---------- 3. TYPOGRAPHY ---------- */
+  --font-display: "Bricolage Grotesque", "Arial Narrow", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-body:    "Bricolage Grotesque", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif:   "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, Menlo, monospace;
+
+  /* Weights (Bricolage is variable 200–800) */
+  --fw-thin:    250;
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* Variable axes defaults (font-variation-settings helpers) */
+  --wdth-condensed: 75;
+  --wdth-normal:    100;
+
+  /* Type scale — fluid. Values tuned for 360px → 1440px+ */
+  --fs-mega:    clamp(4.25rem, 15.5vw, 17rem);    /* hero name, 1440 ≈ 223px */
+  --fs-display: clamp(3.25rem, 9vw, 9.5rem);      /* page titles, 1440 ≈ 130px */
+  --fs-h1:      clamp(2.5rem, 6vw, 6.25rem);      /* 1440 ≈ 86px */
+  --fs-h2:      clamp(2rem, 4.2vw, 4.5rem);       /* 1440 ≈ 60px */
+  --fs-h3:      clamp(1.5rem, 2.4vw, 2.5rem);     /* 1440 ≈ 35px */
+  --fs-h4:      clamp(1.25rem, 1.6vw, 1.625rem);  /* 1440 ≈ 23px */
+  --fs-lead:    clamp(1.25rem, 1.85vw, 1.875rem); /* manifesto / intro paragraphs */
+  --fs-body:    clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --fs-small:   0.875rem;
+  --fs-micro:   0.6875rem;                        /* mono HUD labels (11px) */
+  --fs-nano:    0.625rem;                         /* cursor coords, tiny HUD (10px) */
+
+  /* Line heights */
+  --lh-mega:  0.82;
+  --lh-tight: 0.92;
+  --lh-head:  1.02;
+  --lh-snug:  1.25;
+  --lh-body:  1.6;
+
+  /* Letter spacing */
+  --ls-mega:  -0.055em;
+  --ls-tight: -0.035em;
+  --ls-head:  -0.02em;
+  --ls-body:  0;
+  --ls-mono:  0.08em;
+  --ls-caps:  0.14em;
+
+  /* ---------- 4. SPACING (8pt-ish, fluid at top end) ---------- */
+  --sp-1:  0.25rem;   /* 4 */
+  --sp-2:  0.5rem;    /* 8 */
+  --sp-3:  0.75rem;   /* 12 */
+  --sp-4:  1rem;      /* 16 */
+  --sp-5:  1.5rem;    /* 24 */
+  --sp-6:  2rem;      /* 32 */
+  --sp-7:  3rem;      /* 48 */
+  --sp-8:  4rem;      /* 64 */
+  --sp-9:  clamp(4rem, 8vw, 8rem);     /* 128 */
+  --sp-10: clamp(6rem, 12vw, 12rem);   /* 192 — section padding */
+  --sp-11: clamp(8rem, 18vw, 18rem);   /* chapter breathing room */
+
+  /* ---------- 5. GRID / LAYOUT ---------- */
+  --grid-cols:   12;
+  --grid-gutter: clamp(1rem, 1.6vw, 1.5rem);
+  --page-margin: clamp(1.25rem, 4vw, 4rem);
+  --max-width:   1680px;
+  --max-text:    62ch;
+  --header-h:    clamp(3.75rem, 5.5vw, 5rem);
+  --slot-size:   clamp(4.5rem, 7vw, 6.5rem);  /* inventory slot cell */
+
+  /* ---------- 6. RADII (sharp-first; game UI bevels, not bubbles) ---------- */
+  --r-0:    0;
+  --r-xs:   2px;
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   14px;
+  --r-pill: 999px;
+  --bevel:  10px;  /* clip-path corner cut size for "item card" shapes */
+
+  /* ---------- 7. BORDERS / EFFECTS ---------- */
+  --bw:       1px;
+  --bw-thick: 2px;
+  --glow-accent: 0 0 0 1px rgba(var(--accent-rgb), 0.5), 0 0 32px rgba(var(--accent-rgb), 0.25);
+  --shadow-card: 0 30px 60px -20px rgba(0, 0, 0, 0.65);
+  --grain-opacity: 0.07;
+  --scanline-opacity: 0.035;
+
+  /* ---------- 8. Z-INDEX LAYERS ---------- */
+  --z-bg:         0;    /* WebGL canvas (position: fixed) */
+  --z-content:    1;    /* main */
+  --z-raised:     5;    /* sticky elements inside content */
+  --z-header:     50;
+  --z-menu:       80;
+  --z-toast:      85;
+  --z-transition: 90;
+  --z-preloader:  100;
+  --z-grain:      105;  /* pointer-events: none */
+  --z-cursor:     110;  /* pointer-events: none */
+  --z-skip:       120;
+
+  /* ---------- 9. MOTION ---------- */
+  /* CSS easings (GSAP equivalents in comments — use those in JS) */
+  --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);      /* gsap: "expo.out"  — reveals, entrances */
+  --ease-out-quart:   cubic-bezier(0.25, 1, 0.5, 1);      /* gsap: "power3.out" — UI, hovers */
+  --ease-in-out-slot: cubic-bezier(0.76, 0, 0.24, 1);     /* gsap: "power4.inOut" — transitions, menu */
+  --ease-in-quart:    cubic-bezier(0.5, 0, 0.75, 0);      /* gsap: "power3.in" — exits */
+  --ease-snap:        cubic-bezier(0.34, 1.56, 0.64, 1);  /* gsap: "back.out(1.7)" — slots snapping, toasts */
+  --ease-linear:      linear;                              /* gsap: "none" — ALL scrubbed tweens */
+
+  --dur-instant: 0.12s;
+  --dur-micro:   0.2s;   /* color/opacity hovers */
+  --dur-fast:    0.45s;  /* buttons, cursor morphs, small UI */
+  --dur-base:    0.8s;   /* standard reveal */
+  --dur-slow:    1.2s;   /* headline reveal */
+  --dur-epic:    1.6s;   /* hero entrance, page cover */
+
+  --stagger-char: 0.025s;
+  --stagger-word: 0.06s;
+  --stagger-line: 0.1s;
+  --stagger-item: 0.08s;
+}
+
+/* ---------- Per-page accent (body carries data-page too) ---------- */
+body[data-page="home"]    { --accent: var(--c-laser);    --accent-rgb: 255, 74, 28; }
+body[data-page="about"]   { --accent: var(--c-amber);    --accent-rgb: 242, 181, 68; }
+body[data-page="games"]   { --accent: var(--c-phosphor); --accent-rgb: 182, 242, 58; }
+body[data-page="projects"] { --accent: var(--c-cyan);     --accent-rgb: 67, 224, 194; }
+body[data-page="contact"] { --accent: var(--c-laser);    --accent-rgb: 255, 74, 28; }
+
+/* ---------- Paper (inverted) sections ---------- */
+.is-paper {
+  --c-text: var(--c-ink);
+  --c-text-dim: #4A4840;
+  --c-surface: var(--c-bone);
+  --c-line: var(--c-line-ink);
+}
+
+/* ---------- Reduced motion: collapse durations ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-micro: 0.01s;
+    --dur-fast:  0.01s;
+    --dur-base:  0.01s;
+    --dur-slow:  0.01s;
+    --dur-epic:  0.01s;
+    --stagger-char: 0s;
+    --stagger-word: 0s;
+    --stagger-line: 0s;
+    --stagger-item: 0s;
+  }
+}

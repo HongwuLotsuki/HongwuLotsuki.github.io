@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Panel — Inventory</title>
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+  <!-- Login (server mode only) -->
+  <div class="ad-login" id="ad-login" hidden>
+    <form class="ad-login__box" id="ad-login-form">
+      <p class="ad-mono ad-dim">INV-ADMIN</p>
+      <h1>Admin panel</h1>
+      <label class="ad-field"><span>Password</span><input type="password" id="ad-password" autocomplete="current-password" required autofocus></label>
+      <button class="ad-btn ad-btn--solid" type="submit">Log in</button>
+      <p class="ad-login__err ad-mono" id="ad-login-err" role="alert"></p>
+      <p class="ad-dim ad-small">The password is in <code>admin.config.json</code> in the project folder.</p>
+    </form>
+  </div>
+
+  <div class="ad-app" id="ad-app" hidden>
+    <header class="ad-top">
+      <div class="ad-brand"><span class="ad-brand__mark">YZ</span><div><strong>Admin panel</strong><span class="ad-mono ad-dim" id="ad-mode">—</span></div></div>
+      <div class="ad-top__actions">
+        <span class="ad-dirty ad-mono" id="ad-dirty" hidden>● Unsaved changes</span>
+        <button class="ad-btn" type="button" id="ad-preview" title="Show the draft on the site in this browser">Preview ↗</button>
+        <button class="ad-btn ad-btn--solid" type="button" id="ad-save">Save</button>
+        <details class="ad-more">
+          <summary class="ad-btn" aria-label="More actions">⋯</summary>
+          <div class="ad-more__menu">
+            <button type="button" id="ad-download">Download content.js</button>
+            <button type="button" id="ad-export">Export as JSON</button>
+            <label class="ad-more__file">Import JSON<input type="file" id="ad-import" accept=".json,application/json"></label>
+            <button type="button" id="ad-reset" class="ad-danger">Discard draft (back to published)</button>
+            <button type="button" id="ad-logout" hidden>Log out</button>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <div class="ad-notice" id="ad-notice" hidden></div>
+
+    <div class="ad-body">
+      <nav class="ad-tabs" id="ad-tabs" aria-label="Sections">
+        <button type="button" data-tab="general" class="is-active">General & contact</button>
+        <button type="button" data-tab="projects">Projects</button>
+        <button type="button" data-tab="games">Games</button>
+        <button type="button" data-tab="about">About</button>
+        <button type="button" data-tab="home">Home</button>
+        <button type="button" data-tab="texts">All texts</button>
+        <a class="ad-tabs__site" href="index.html" target="_blank" rel="noopener">Open site ↗</a>
+      </nav>
+      <main class="ad-main" id="ad-main"></main>
+    </div>
+  </div>
+
+  <div class="ad-toast" id="ad-toast" role="status" aria-live="polite"></div>
+
+  <!-- Default texts for "All texts" -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/i18n/common.js"></script>
+  <script src="assets/js/i18n/home.js"></script>
+  <script src="assets/js/i18n/about.js"></script>
+  <script src="assets/js/i18n/games.js"></script>
+  <script src="assets/js/i18n/projects.js"></script>
+  <script src="assets/js/i18n/contact.js"></script>
+  <script src="assets/data/content.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

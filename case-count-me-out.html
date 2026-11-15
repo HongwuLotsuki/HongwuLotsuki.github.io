@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Count Me Out — Yangshun Zhu</title>
+  <meta name="description" content="Count Me Out: a Unity game for GMTK Game Jam 2026. Gameplay programming in a team of eight.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/pages/case.css">
+</head>
+<body class="case t-casino">
+<main class="case-wrap">
+  <a class="case-back" href="games.html">← Games</a>
+
+  <section class="slide hero">
+    <figure><img src="assets/media-v2/count-me-out/p01-1.jpg" alt="Count Me Out title artwork: a suited Time Thief beside a neon casino logo" width="1800" height="900" style="border-radius:22px"></figure>
+    <h1 style="margin-top:28px">Count Me Out</h1>
+    <p class="intro" style="color:var(--page-ink)">A Unity game for GMTK Game Jam 2026. The theme was Countdown. I worked on gameplay programming in a team of eight.</p>
+  </section>
+
+  <section class="slide">
+    <div class="split rev">
+      <div>
+        <h2>Intro</h2>
+        <p>As a Time Thief, escape the casino by rewinding time. Hold to aim and preview two paths from the same launch point, then release to fire.</p>
+        <p>Rewind to launch to bring the marble back to time zero. Keep rewinding to enter negative time and take a different route through the room.</p>
+        <p class="links"><a href="https://sebindarg.itch.io/count-me-out">Play on itch.io</a></p>
+      </div>
+      <figure class="fit"><img src="assets/media-v2/count-me-out/p02-2.jpg" alt="Count Me Out gameplay: a pachinko-style table" width="530" height="802"></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Why a casino?</h2>
+    <p>Pachinko gave us the feeling that one more steel ball could win back what you lost. For Countdown, we put the player inside the machine and made shooting and rewinding their way out.</p>
+    <div class="cols c3" style="margin-top:20px">
+      <figure><img src="assets/media-v2/count-me-out/p03-2.jpg" alt="Pachinko in STONKS-9800" width="840" height="650"><figcaption><b>Pachinko in STONKS-9800</b></figcaption></figure>
+      <figure><img src="assets/media-v2/count-me-out/p03-3.jpg" alt="Pachinko parlour in Tokyo-Ga" width="1750" height="1274"><figcaption><b>Tokyo-Ga (1985), Wim Wenders</b></figcaption></figure>
+      <figure><img src="assets/media-v2/count-me-out/p03-4.jpg" alt="1980s Tokyo disco" width="1000" height="571"><figcaption><b>1980s Tokyo disco reference</b></figcaption></figure>
+    </div>
+    <p style="margin-top:16px">The casino's side art draws on the excess of the bubble years.</p>
+  </section>
+
+  <section class="slide">
+    <div class="cols c2">
+      <div>
+        <h2>Task Breakdown</h2>
+        <div class="cols c2" style="gap:18px">
+          <div><h3>Gameplay programming</h3><p>Paused aiming<br>Dual trajectory preview<br>Negative-time guard defense<br>Audio and collision cues</p></div>
+          <div><h3>Iteration and polish</h3><p>Collision filtering<br>Preview accuracy<br>Aiming animation<br>Scene and layer fixes</p></div>
+        </div>
+        <h3>Level integration</h3>
+        <p>Merged gameplay, art and audio into the level. Built the win trigger, start and quit button logic, and pause menu. Exported the final build.</p>
+        <p>Teammates built the rewind framework, score system and main menu scene.</p>
+      </div>
+      <div>
+        <h2>Game Design</h2>
+        <p>Aim, predict, fire, rewind, interact, then progress.</p>
+        <div class="cols c2">
+          <figure class="fit"><img src="assets/media-v2/count-me-out/p07-2.jpg" alt="Forward play" width="438" height="671"><figcaption><b>Forward play</b></figcaption></figure>
+          <figure class="fit"><img src="assets/media-v2/count-me-out/p07-3.jpg" alt="Rewinding" width="438" height="656"><figcaption><b>Rewinding</b></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Paused Aiming &amp; Trajectory Preview</h2>
+    <div class="split even">
+      <figure><img src="assets/media-v2/count-me-out/p05-2.jpg" alt="Two trajectory preview paths from one launch point" width="783" height="491"></figure>
+      <div>
+        <h3>Two paths before launch</h3>
+        <p>I built paused aiming on top of our shared rewind framework. The world stays still while the aim direction and both paths update.</p>
+        <h3>Refining the bounce</h3>
+        <p>I used the marble's collision radius, filtered hits and offset the next segment so it would not hit the same wall twice.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Making the preview match the shot</h2>
+    <p>The live shot uses Rigidbody2D. For the preview I sweep the marble's actual radius, ignore non-blocking hits, and continue from just beyond the bounce surface.</p>
+    <div class="split" style="grid-template-columns:1.3fr 1fr; margin-top:18px">
+      <div>
+        <h3>Choose the closest valid collision</h3>
+<pre>RaycastHit2D[] hits = Physics2D.CircleCastAll(
+    origin, marbleRadius, direction,
+    distance, collisionMask);
+foreach (RaycastHit2D hit in hits)
+{
+    if (hit.collider == null) continue;
+    if (hit.collider.isTrigger) continue;
+    if (ignoredRoot != null &amp;&amp;
+        hit.collider.transform.IsChildOf(ignoredRoot))
+        continue;
+    if (hit.distance &gt;= closestDistance) continue;
+    foundHit = true;
+    closestDistance = hit.distance;
+    result = hit;
+}
+return foundHit;</pre>
+      </div>
+      <div>
+        <h3>Continue after a bounce</h3>
+<pre>velocity = Vector2.Reflect(
+    velocity, collisionNormal);
+if (velocity.sqrMagnitude &lt; 0.0001f)
+    return;
+
+origin = centerAtHit +
+    velocity.normalized * surfaceOffset;</pre>
+        <p>I also mirrored the bumper's speed rules to keep the preview closer to the real shot.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>From aiming to releasing the marble</h2>
+    <div class="cols c2">
+      <div class="split even" style="grid-template-columns:1fr 1fr">
+        <figure class="fit"><img src="assets/media-v2/count-me-out/p07-2.jpg" alt="Aiming with preview lines" width="438" height="671"></figure>
+        <div><h3>Hold to aim</h3><p>Time is paused. The thin lines preview the marble's two possible routes.</p></div>
+      </div>
+      <div class="split even" style="grid-template-columns:1fr 1fr">
+        <figure class="fit"><img src="assets/media-v2/count-me-out/p07-3.jpg" alt="Marble released under live physics" width="438" height="656"></figure>
+        <div><h3>Release to launch</h3><p>The preview lines disappear and the cyan marble moves under live physics.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Project Challenge</h2>
+    <div class="cols c2">
+      <div>
+        <h3>Prediction vs. live physics</h3>
+        <p>The preview estimates collision and reflection. I checked it against the Unity shot and tuned collider filtering and the post-bounce offset.</p>
+        <h3>Rewind state</h3>
+        <p>My guard prototype intercepts normal shots. A negative-time marble can pass through during rewind and knock the guard down when forward play resumes.</p>
+      </div>
+      <div>
+        <h3>Build setup</h3>
+        <p>I connected the menu buttons and win flow, built the pause menu, and exported the final build.</p>
+        <h3>Team retrospective</h3>
+        <p>Separate prototypes let us work in parallel. Next time I want to help shape our answer to the theme before implementation.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-foot"><a href="games.html">← Back to games</a><span>Unity · GMTK Game Jam 2026</span></div>
+</main>
+</body>
+</html>

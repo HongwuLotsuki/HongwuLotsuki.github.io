@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Drowned in Yesterday — Yangshun Zhu</title>
+  <meta name="description" content="Drowned in Yesterday: a 2D puzzle adventure made for CiGA Game Jam 2026. All gameplay programming in Unity 6.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/pages/case.css">
+</head>
+<body class="case t-navy">
+<main class="case-wrap">
+  <a class="case-back" href="games.html">← Games</a>
+
+  <section class="slide">
+    <div class="split even">
+      <div>
+        <h1>Drowned in Yesterday</h1>
+        <p>My first Game Jam fell on my birthday. I stayed up for most of the 48 hours building gameplay for our Unity 6 side-scrolling puzzle game.</p>
+        <p>We made it for CiGA Game Jam 2026. The theme was Anchor, and I was the team's only gameplay programmer.</p>
+        <p class="links"><a href="https://gmhub.com/game/10134">View on GMHub ↗</a></p>
+      </div>
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p01-1.jpg" alt="Title artwork: an anchor and hooded ghostly figures in blue ink wash" width="1373" height="801"><figcaption>Title artwork by the team</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>The anchor we planned</h2>
+    <div class="split even">
+      <div>
+        <p>We started with a ship and the story of a sailor and captain. I wanted the anchor to show the rising water through rust. At the highest point, the first drowning would reveal how the player died and send them back to try again.</p>
+        <p>The team kept revising the route and the puzzles. We ran out of time to implement the anchor and the full sequence that went with it.</p>
+      </div>
+      <div>
+        <div class="cols c2">
+          <figure><img src="assets/media-v2/drowning-in-yesterday/p02-1.jpg" alt="Anchor concept art with a gem" width="1343" height="1364"></figure>
+          <figure><img src="assets/media-v2/drowning-in-yesterday/p02-2.jpg" alt="Plain anchor concept art" width="1343" height="1364"></figure>
+        </div>
+        <p class="note" style="margin-top:8px">Two anchor designs by a teammate. Both remained concept art.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Project Overview</h2>
+    <div class="split rev">
+      <div>
+        <p>A ferryman enters a sinking ship to guide a restless spirit to the afterlife. The sea is swallowing the decks, and the only way to reach her is to piece together what remains of her past.</p>
+        <p>In the current main level, players climb between decks, solve puzzles, and open new passages to collect five memory bubbles before the water cuts off parts of the ship.</p>
+        <p class="note">The jam theme, Anchor, links the spirit's attachment to her collection with the time anchor that binds the ferryman to the ship.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Event</dt><dd>2026 CiGA Game Jam</dd></div>
+        <div><dt>Genre</dt><dd>2D puzzle adventure</dd></div>
+        <div><dt>Engine</dt><dd>Unity 6 / URP 2D</dd></div>
+        <div><dt>Team</dt><dd>Seven contributors</dd></div>
+        <div><dt>My role</dt><dd>All gameplay programming</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Story · A Spirit Anchored to Her Collection</h2>
+    <p>The team wrote the spirit's backstory as five first-person memories. The ferryman searches the ship for clues to what she could never let go.</p>
+    <div class="split rev" style="margin-top:20px">
+      <div class="mem">
+        <b>01 Collecting</b><span>I started with a few antiques. In time, those silent objects drew my attention more than anyone else.</span>
+        <b>02 Exhibiting</b><span>My room could no longer hold them. I rented a hall and laid out my treasures so the world could see what they were worth.</span>
+        <b>03 Hiding</b><span>The crowds made me uneasy. I was sure someone wanted my collection, so I hid it where only I could see it.</span>
+        <b>04 Overloading</b><span>Antiques filled the decks, cabins, and corridors. My ship grew too slow to catch other vessels and seize supplies. I still kept every piece.</span>
+        <b>05 Staying behind</b><span>The crew left. I refused to go ashore and died alone and hungry. The ship became the anchor that held me to my past.</span>
+      </div>
+      <figure>
+        <div class="cols c2" style="gap:6px;background:#000;padding:8px">
+          <img src="assets/media-v2/drowning-in-yesterday/p04-1.jpg" alt="Character concept art" width="500" height="1000" style="background:#000">
+          <img src="assets/media-v2/drowning-in-yesterday/p04-2.jpg" alt="Ferryman animation still" width="460" height="897" style="background:#000">
+        </div>
+        <figcaption>Character concept and ferryman animation still</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Searching the lower decks</h2>
+    <p>The ferryman searches the sinking ship for five memory bubbles. The lower deck is the first to flood.</p>
+    <div class="cols c2" style="margin-top:20px">
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p05-1.jpg" alt="Searching a cabinet" width="1187" height="667"><figcaption><b>Search the cabinet</b>Look inside the cabinet for a key and a memory bubble.</figcaption></figure>
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p05-2.jpg" alt="Climbing as the water rises" width="1187" height="662"><figcaption><b>Climb as the water rises</b>Use ladders and move crates to get around. The gold crate can serve as a step.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Solving the bells and the rings</h2>
+    <p>The puzzle panels lock movement, but the water keeps rising behind them.</p>
+    <div class="cols c2" style="margin-top:20px">
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p06-1.jpg" alt="Bell puzzle" width="1186" height="667"><figcaption><b>Bell sequence</b>Ring the four bells in the clue's order to earn a memory bubble.</figcaption></figure>
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p06-2.jpg" alt="Rotating rings puzzle" width="1186" height="668"><figcaption><b>Rotating rings</b>Align the three rings to earn a key for the trapdoor and open a route upward.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Letting the water lift the chest</h2>
+    <p>The water uses a 120-second rise parameter. It cuts off the lower deck and carries the red chest toward the upper platform.</p>
+    <div class="cols c2" style="margin-top:20px">
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p07-1.jpg" alt="The chest floats between decks" width="1183" height="657"><figcaption><b>The chest floats between decks</b>The red chest at the right rises with the floodwater. Solve other puzzles while it comes up.</figcaption></figure>
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p07-2.jpg" alt="Reaching the chest from the upper level" width="1182" height="654"><figcaption><b>Reach it from the upper level</b>The chest rises into reach and its memory bubble becomes available. Collect five bubbles to finish.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Original Design · The First Drowning</h2>
+    <p class="flow"><span>Death screen</span><span>→</span><span>Black screen and internal monologue</span><span>→</span><span>Return to the start</span><span>→</span><span>Unlock the timeline</span></p>
+    <div class="cols c2">
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p08-1.jpg" alt="Design sketch of the first death" width="1270" height="1000"><figcaption><b>First death reveals the anchor</b>The ferryman's internal monologue explains that the time anchor has trapped them here until they recover the spirit's story. The screen fades in at the starting point, skipping the opening cinematic.</figcaption></figure>
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p08-2.jpg" alt="Annotated sketch of the rewind route" width="1270" height="1000"><figcaption><b>Rewind changes the route</b>The annotated sketch explores moving a crate into position as a step, retrieving a key, and opening the trapdoor while the water rises.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>My Contribution and Implementation</h2>
+    <p class="intro">I handled all gameplay programming: player controls, world interactions, water, puzzles, inventory and HUD, and the flow from the title screen to the ending.</p>
+    <div class="cols c2" style="margin-top:24px">
+      <div class="tile"><h3>A shared interaction entry point</h3><p>Entering an interaction zone shows an E prompt. UnityEvents route the input to a puzzle, pickup, or door. Modal panels lock movement while they are open.</p></div>
+      <div class="tile"><h3>Match drowning to the visible waterline</h3><p>The C# water check mirrors the shader's two-wave calculation and pixel quantization so the head-submersion test follows the visible, stepped surface.</p></div>
+      <div class="tile"><h3>Connect puzzles, rewards, and the ending</h3><p>Puzzle completion sends an event. Scene configuration decides what to spawn. Bells award a memory bubble, rings award a key, and collecting five bubbles triggers the ending fade.</p></div>
+      <div class="tile"><h3>Tools and team</h3><p>I built the gameplay in Unity and C#. I used Claude Code in VS Code with DeepSeek as the backend model. Other team members created the art and audio.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>From Prototype to Main Level</h2>
+    <div class="cols c2">
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p10-1.jpg" alt="Movement and platform prototype capture" width="1500" height="844"><figcaption>Development capture / Movement and platform prototype</figcaption></figure>
+      <figure><img src="assets/media-v2/drowning-in-yesterday/p10-2.jpg" alt="Character, ladders and puzzles capture" width="1500" height="844"><figcaption>Development capture / Character, ladders, and puzzles</figcaption></figure>
+    </div>
+    <div class="cols c2" style="margin-top:24px">
+      <div><h3>Fixing character jitter</h3><p>Animation and Rigidbody2D both changed the character's position. I moved animation to a visual child and removed its vertical position curves, leaving movement to the rigidbody.</p></div>
+      <div><h3>Making the open trapdoor passable</h3><p>The floor collider still covered the opening after the door swung. I split the floor collider to leave a gap and switched the door collider to a trigger when open.</p></div>
+    </div>
+    <p class="note">The trapdoor spec documents the key check and collider change. The closet spec reuses the same E-key trigger and inventory flow for pickups.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Pacing Sketch and Implementation Scope</h2>
+    <div class="split even">
+      <div>
+        <figure><img src="assets/media-v2/drowning-in-yesterday/p11-1.jpg" alt="Original pacing sketch with estimated route timings" width="1462" height="782"><figcaption>Original pacing sketch / Estimated route timings and flood milestones</figcaption></figure>
+        <div class="tile" style="margin-top:14px">
+          <h3>Key notes in the sketch</h3>
+          <p>~10 s tutorial → blackout and ability introduction → ~30 s before the water moves → ~15 s to flood deck 1 → ~15 s to flood deck 2, then the water holds.</p>
+          <p class="note" style="margin-top:6px">The team also estimated time for walking, climbing, moving a crate, and solving puzzles.</p>
+        </div>
+      </div>
+      <div>
+        <h3>Current Unity main level</h3>
+        <p>Rising water, floating chest, two puzzles, five memory bubbles, and an ending fade. Drowning reloads the level.</p>
+        <h3>Standalone prototype</h3>
+        <p>SceneWater tests object snapshots and checks restoration against the water. Dialogue code exists outside the main level flow.</p>
+        <h3>Unfinished narrative flow</h3>
+        <p>The first-death monologue, timeline unlock, and reconstruction of the spirit's life in chronological order remained part of the design.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>What broke during the jam</h2>
+    <div class="split even">
+      <div>
+        <p>The scope kept changing while I was writing gameplay code. I did not plan the prefabs and their responsibilities early enough, so small interactions became hard to test by themselves.</p>
+        <p>The bell and ring panels share a movement lock, while the water advances independently. If I missed a close path, I had to work back through several scripts to see why the player was still locked.</p>
+        <p>AI-assisted coding helped me get started, but the pieces I had not thought through were harder to read and fix later.</p>
+        <h3 style="margin-top:28px">What I would do in the next 48 hours</h3>
+        <p>Settle the playable route on the first night. Build one interaction at a time, decide what owns its state, and review the code before the next feature depends on it.</p>
+      </div>
+      <div>
+        <h3>Puzzle input and the water clock</h3>
+<pre>// Bell puzzle: opening the panel
+isOpen = true;
+currentIndex = 0;
+PlayerController.InputLocked = true;
+
+// Bell puzzle: closing the panel
+isOpen = false;
+PlayerController.InputLocked = false;
+
+// Game manager: water advances independently
+if (!waterStopped)
+{
+    elapsed += Time.deltaTime;
+    float level = Mathf.Clamp01(
+        elapsed / waterRiseDuration);
+    if (waterController != null)
+        waterController.waterLevel = level;
+    // ...
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-foot"><a href="games.html">← Back to games</a><span>Unity 6 · CiGA Game Jam 2026</span></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Admission Desk — Yangshun Zhu</title>
+  <meta name="description" content="Admission Desk: an admissions desk simulation prototype built in Unity 6 and C#.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/pages/case.css">
+</head>
+<body class="case t-paper">
+<main class="case-wrap">
+  <a class="case-back" href="games.html">← Games</a>
+
+  <section class="slide">
+    <div class="split">
+      <div>
+        <h1>Admission Desk</h1>
+        <p class="sub">An admissions desk simulation</p>
+        <p>You work in admissions at a fictional university. A paper application lands on your desk. Check the school rank and GPA, then decide which stamp to use.</p>
+        <p>I developed the design and built the prototype in Unity 6 and C#. The same routine that teaches the rules on the first day later gives a supervisor a way to pressure you into breaking them.</p>
+        <h3>The original idea</h3>
+        <p>Inspired by <em>Papers, Please</em>, I imagined a university where applicants came from different planets. Grades, species and rules handed down by senior administrators could all affect the decision at my desk.</p>
+      </div>
+      <figure><img src="assets/media-v2/admission-desk/p01-1.jpg" alt="Day 1 prototype: paper file and school lookup on the desk" width="1600" height="900"><figcaption>Day 1 prototype · the paper file and the school lookup share the desk</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Gameplay influence</h2>
+    <p class="intro">In <em>Papers, Please</em>, checking a document is the main action. A discrepancy changes what the player can do, and the stamp makes the decision final. I brought that sequence to a university admissions desk: compare a claim with a second source, make a decision, then see what happens when someone asks you to set the rules aside.</p>
+    <div class="split" style="grid-template-columns:1fr 1.7fr; margin-top:28px">
+      <figure class="fit"><img src="assets/media-v2/admission-desk/p02-1.jpg" alt="Papers, Please logo" width="1750" height="1750"></figure>
+      <figure><img src="assets/media-v2/admission-desk/p02-2.jpg" alt="Papers, Please inspection booth" width="960" height="600"></figure>
+    </div>
+    <p class="credit" style="margin-top:10px"><em>Papers, Please</em> (2013) · Lucas Pope / 3909 LLC</p>
+  </section>
+
+  <section class="slide">
+    <h2>Designing the admissions desk</h2>
+    <div class="split">
+      <div>
+        <p>I wanted the player to form a habit before testing it. The paper holds the applicant's claims. The computer gives the player a place to check them. The stamp turns that comparison into a decision the game can remember.</p>
+        <p>For the workstation I looked at the thick bezel and recessed screen of a Compaq Presario. The window controls drew on retro Windows interfaces. I kept the computer facing the player for reading and clicking, while the mat and keyboard recede toward the wall.</p>
+        <h3>Visual references</h3>
+        <p class="note">Compaq Presario · Centre for Computing History<br>Retro Windows GUI · comp3interactive</p>
+      </div>
+      <figure><img src="assets/media-v2/admission-desk/p03-1.jpg" alt="The workstation built from layered art" width="1600" height="900"><figcaption>The workstation, built from layered art</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Learning to review a file</h2>
+    <p class="intro">The first application teaches the sequence: pick up the paper, check the school rank and GPA, then stamp and submit. After five paper applications and three delivered by email, the supervisor reviews the player's decisions.</p>
+    <div class="split rev" style="margin-top:28px">
+      <figure><img src="assets/media-v2/admission-desk/p04-1.jpg" alt="Day one complete screen with supervisor feedback" width="1600" height="900"></figure>
+      <div>
+        <p>In this run, the player approved an applicant whose GPA was below 3.0. The supervisor flags the exact rule at day end. Mistakes carry no penalty on the teaching day.</p>
+        <p>The player can then continue with <strong>Next Day</strong> or return to the title screen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Three applications, one layout</h2>
+    <p class="intro">The same prefab handles short and long applications. Nathaniel's full record spans three pages. Alyssa and Grace show why a passing school rank is only one part of the decision.</p>
+    <div class="cols c3" style="margin-top:28px">
+      <figure><img src="assets/media-v2/admission-desk/p05-1.jpg" alt="Nathaniel Brooks application" width="405" height="563"><figcaption>Nathaniel Brooks · Page 1 of 3</figcaption></figure>
+      <figure><img src="assets/media-v2/admission-desk/p05-2.jpg" alt="Alyssa Monroe application" width="407" height="566"><figcaption>Alyssa Monroe · GPA 2.18 fails</figcaption></figure>
+      <figure><img src="assets/media-v2/admission-desk/p05-3.jpg" alt="Grace Whitmore application" width="408" height="570"><figcaption>Grace Whitmore · GPA 3.05 narrowly passes</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>How the resume prefab works</h2>
+    <div class="split">
+      <div>
+        <p>Each applicant is a ResumeData asset. Names, GPA, work history and other content live in the asset. The ResumeWindow prefab holds the paper layout and its UI references.</p>
+        <p>When the active application changes, ResumeSpawner creates a new instance of the prefab and passes in that applicant's data. ResumeView binds it to the paper. The spawner carries over the previous position, so the next file opens in the same place.</p>
+      </div>
+      <div>
+        <h3>ResumeSpawner · from the queue to the desk</h3>
+<pre>if (ActiveResumeView != null)
+{
+    sharedResumePosition = ActiveResumeView.transform.position;
+    spawnPosition = sharedResumePosition;
+    ActiveResumeView.gameObject.SetActive(false);
+    Destroy(ActiveResumeView.gameObject);
+    ActiveResumeView = null;
+}
+
+Transform spawnParent = windowLayer != null
+    ? windowLayer : transform;
+
+ActiveResumeView = Instantiate(resumeWindowPrefab, spawnParent);
+ActiveResumeView.Initialize(resumeData);
+ActiveResumeView.transform.position = spawnPosition;
+ActiveResumeViewChanged?.Invoke(ActiveResumeView);</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>From seven days to three</h2>
+    <p class="intro">The first design spread the pressure across seven days and included rent, investing, debt and a longer investigation. I narrowed the demo to the part that makes the desk work matter: learn the rules, face one exception, then answer for the decision.</p>
+    <div class="cols c3" style="margin-top:28px">
+      <div class="tile"><h3>Day 1 · Learn the rules</h3><p>Eight teaching and practice applications introduce ranking, GPA and the submission routine.</p></div>
+      <div class="tile"><h3>Day 2 · Face the referral</h3><p>Linkedout adds a second source to check employment claims. A supervisor wants a referred applicant to go through.</p></div>
+      <div class="tile"><h3>Day 3 · Answer the auditor</h3><p>The final question can lead to staying, being fired, or leaving. Earlier choices change the context of the audit.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>The rules behind the stamp</h2>
+    <div class="split">
+      <div>
+        <p>School rank and GPA are deliberately easy to state. They are harder to apply while reading separate interfaces and handling borderline files.</p>
+        <p>On the teaching day, a rank of 100 and a GPA of 3.00 pass. A rank of 101 or a GPA of 2.90 fails even when the other value passes. Linkedout later introduces disputed records as a separate reason to reject.</p>
+      </div>
+      <div>
+        <h3>ReviewRuleSet · acceptance and record checks</h3>
+<pre>public bool ShouldAccept(ResumeData resume, int schoolRank)
+{
+    return resume != null && schoolRank > 0 &&
+           schoolRank &lt;= maximumSchoolRank &&
+           resume.TryGetGpa(out float gpa) &&
+           gpa &gt;= minimumGpa && !HasDisputedRecord(resume);
+}
+
+public static bool HasDisputedRecord(ResumeData resume)
+{
+    var records = resume != null ? resume.Linkedout : null;
+    if (records == null) return false;
+    foreach (var record in records)
+        if (record != null &&
+            record.Status != LinkedoutStatus.Confirmed)
+            return true;
+    return false;
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Making the referral matter later</h2>
+    <div class="split">
+      <div>
+        <p>The referral needs to outlast its place in the application queue. The controller records whether it was accepted and reads that flag during the Day 3 audit.</p>
+        <p>Confessing leads to staying. Hiding the decision can get the player fired if they accepted the referral. Leaving is always a separate exit. The audit also changes its opening depending on whether the player checked a previous record.</p>
+      </div>
+      <div>
+        <h3>Day 3 · the ending decision</h3>
+<pre>if (leave)
+{
+    ShowEnding("audit.leave.reply", "ending.run");
+    return;
+}
+if (confess)
+{
+    DayProgress.Confessed = true;
+    ShowEnding("audit.confess.reply", "ending.clean");
+    return;
+}
+ShowEnding("audit.hide.reply",
+    DayProgress.ReferralAccepted
+        ? "ending.fired" : "ending.clean");</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Where I want to take the full game</h2>
+    <div class="cols c2">
+      <div>
+        <h3>A university with competing rules</h3>
+        <p>I want to bring back the interplanetary university from the original design. Applicants would arrive from different planets, and the administration could issue policies that weigh their species alongside their grades. I want the files to show how those policies affect individual applicants.</p>
+        <p>One case could meet the academic requirements while a new directive tells the reviewer to turn it down. That kind of conflict would let the player learn about the world through the decisions they make at the desk.</p>
+      </div>
+      <div>
+        <h3>Financial pressure and phone calls</h3>
+        <p>I imagined the reviewer facing money problems of their own while trading stocks. A phone call could let them blackmail someone, or put them on the receiving end of blackmail. I want those calls to give the player a reason to weigh what they know about an applicant against what they need outside work.</p>
+        <p>I would first prototype one call that refers back to a decision the player made. From there, I would connect financial choices, what the player reveals or conceals, and the consequences at work to different endings.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-foot"><a href="games.html">← Back to games</a><span>Unity 6 · C# · Prototype</span></div>
+</main>
+</body>
+</html>

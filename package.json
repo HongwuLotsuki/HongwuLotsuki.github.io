@@ -1,0 +1,14 @@
+{
+  "name": "inventory-portfolio",
+  "version": "1.0.0",
+  "description": "A game-inspired, zero-build personal portfolio template with an inventory UI, WebGL background and a built-in admin panel.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "admin": "node admin-server.js",
+    "start": "node admin-server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,23 @@
+# Admin secrets & local backups
+admin.config.json
+assets/data/backups/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+*.tmp
+
+# Not for the public site
+作品集介绍整理/
+docs/
+.claude/
+
+GMTK26-Release-Updated/
+
+RoadTrip-Windows-*/
+*.zip
+*.exe
+*.pak

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>RoadTrip — Yangshun Zhu</title>
+  <meta name="description" content="RoadTrip: a driving and survival prototype in Unreal Engine 5.6.1 where you leave the RV and roll dice to search for supplies.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/pages/case.css">
+</head>
+<body class="case t-paper">
+<main class="case-wrap">
+  <a class="case-back" href="games.html">← Games</a>
+
+  <section class="slide">
+    <div class="split">
+      <div>
+        <h1>RoadTrip</h1>
+        <p>I built RoadTrip in Unreal Engine 5.6.1. It is a driving and survival prototype where you can pull over, leave the RV and roll dice to see what comes of searching for supplies. I designed the route and gameplay and built the interactions in Blueprint.</p>
+        <p>What stayed with me in <em>Nomadland</em> was watching someone look for work out of an RV, meeting other people who were getting by in their own ways. I kept hearing that graduation might mean unemployment, especially as layoffs continued. That uncertainty reminded me of leaving home to study abroad on my own.</p>
+      </div>
+      <figure><img src="assets/media-v2/roadtrip/p01-1.jpg" alt="The RV driving along a road in the prototype" width="1351" height="716"><figcaption>Driving the RV in the prototype</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Nomadland and life between stops</h2>
+    <p class="intro">In Chloé Zhao's <em>Nomadland</em>, Fern takes temporary jobs and meets other people living on the road. The RV gave me a way to link jobs, supplies and places to rest. It also gave me a way to write about handling uncertainty alone while studying abroad.</p>
+    <div class="split" style="grid-template-columns: 2.6fr 1fr; margin-top:28px">
+      <figure><img src="assets/media-v2/roadtrip/p02-1.jpg" alt="Film still from Nomadland: a van parked at dusk" width="780" height="439"></figure>
+      <figure><img src="assets/media-v2/roadtrip/p02-2.jpg" alt="Nomadland film poster" width="1181" height="1750"></figure>
+    </div>
+    <p class="credit" style="margin-top:10px"><em>Nomadland</em> (2020), directed by Chloé Zhao. Film still and poster © Searchlight Pictures.</p>
+  </section>
+
+  <section class="slide">
+    <h2>From racing to living on the road</h2>
+    <p class="intro">I began with item races and vehicle upgrades. The idea became a road trip where ordinary stops could carry risk. I kept the die roll and sketched how the same interaction could support searching or working in town.</p>
+    <h3 style="margin-top:28px">Early town interaction design</h3>
+    <table class="tbl">
+      <tr><td>Factory line</td><td>Strength</td><td>Risk injury or earn more for moving more goods</td></tr>
+      <tr><td>Restaurant</td><td>Social skill</td><td>Try getting work as a server</td></tr>
+      <tr><td>Convenience store</td><td>Intelligence</td><td>Try getting work as a cashier</td></tr>
+      <tr><td>Discarded supplies</td><td>Strength</td><td>Search a bin with no injury risk in the early table</td></tr>
+    </table>
+    <p class="note">Condensed from the early design table. A second roll was proposed, with a higher penalty for failing twice.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Searching for supplies</h2>
+    <div class="split rev">
+      <figure><img src="assets/media-v2/roadtrip/p04-1.jpg" alt="Exploring a junkyard on foot" width="1081" height="573"><figcaption>Exploring the junkyard on foot · gameplay recording</figcaption></figure>
+      <div>
+        <p>I wanted players to get out of the RV and look around before deciding what was worth searching. The die roll picks a result, which can change survival stats or yield an item.</p>
+        <p>In the recorded junkyard sequence, searching a plastic bag turns up bottled water.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>A reason to drive back</h2>
+    <div class="split rev">
+      <figure><img src="assets/media-v2/roadtrip/p05-1.jpg" alt="Talking with Elias in the junkyard" width="1081" height="573"><figcaption>Speaking with Elias at the junkyard · gameplay recording</figcaption></figure>
+      <div>
+        <p>Elias asks the player to find a silver pocket watch he left near the church. The player drives there to look for it, then brings it back to the junkyard.</p>
+        <p>I used the conversation to give the player a reason to remember a place and drive back through it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Connecting the RV and the stops</h2>
+    <div class="split rev">
+      <figure><img src="assets/media-v2/roadtrip/p06-1.jpg" alt="The vehicle upgrade interface with Engine, Fuel Tank, Headlight and Tire" width="1351" height="716"><figcaption>The vehicle upgrade interface</figcaption></figure>
+      <div>
+        <p>The RV, search objects and other interactable actors use the same Blueprint interface. When the player gets out, control passes back to the on-foot character.</p>
+        <p>I gave search results their own data structure for roll ranges, text, changes to health or hunger, and a reward item. The vehicle's upgrade area opens the menu and reads its current upgrade levels.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Building the route</h2>
+    <div class="split even">
+      <div>
+        <p>This was my first time using Blueprint. The hard part was figuring out where to put the logic once the vehicle, the character and the interface all needed to know about the same interaction.</p>
+        <p>I was picking assets one at a time. Once they were together, they were difficult to integrate into the 3D level and did not look like they belonged to the same place. I ended up looking for low-poly assets that fit one another.</p>
+        <h3 style="margin-top:32px">The next stop</h3>
+        <p>I want to make an overnight stop inside the RV playable first, then try a work encounter in town. That would let me test whether the drive, the decisions about supplies and the reason to keep going work together over more than one stop.</p>
+      </div>
+      <figure><img src="assets/media-v2/roadtrip/p07-1.jpg" alt="Approaching the church along a hillside road" width="1351" height="716"><figcaption>An approach to the church from DrivingHill</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="case-foot"><a href="games.html">← Back to games</a><span>Unreal Engine 5.6.1 · 2026</span></div>
+</main>
+</body>
+</html>
