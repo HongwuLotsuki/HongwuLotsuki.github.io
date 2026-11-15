@@ -122,9 +122,9 @@ window.SITE_CONTENT = {
       "caseStudy": "case-project-403.html",
       "title": "Project 403",
       "cover": "city",
-      "coverImage": "assets/media/project-403/street.png",
-      "coverAlt": "Pixel art street with storefronts and parked vehicles in Project 403",
-      "coverCaption": "Environment art",
+      "coverImage": "assets/media/project-403/apartment.png",
+      "coverAlt": "Pixel art apartment interior at night in Project 403: a kitchen, a lit table, a door and a sofa",
+      "coverCaption": "Apartment environment art",
       "status": "Playable prologue",
       "genre": "Narrative adventure · light puzzles",
       "engine": "Unity 6",
@@ -165,7 +165,9 @@ window.SITE_CONTENT = {
       ],
       "coverImage": "assets/media/roadtrip/cover.jpg",
       "coverAlt": "RoadTrip gameplay prototype: an RV driving along a mountain road with the survival status HUD",
-      "coverCaption": "Gameplay prototype"
+      "coverCaption": "Gameplay prototype",
+      "link": "https://github.com/HongwuLotsuki/Roadtrip",
+      "linkLabel": "View on GitHub ↗"
     },
     {
       "id": "count-me-out",
