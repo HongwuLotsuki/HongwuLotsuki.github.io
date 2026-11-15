@@ -182,13 +182,13 @@
       var meta = [['status', tx(g.status)], ['genre', tx(g.genre)], ['role', tx(g.role)], ['engine', tx(g.engine)], ['year', tx(g.year)]]
         .filter(function (m) { return m[1]; }).map(function (m) { return '<div><dt>' + F[m[0]] + '</dt><dd' + (m[0] === 'engine' ? ' lang="en"' : '') + '>' + esc(m[1]) + '</dd></div>'; }).join('');
       var action = link
-        ? '<a class="g-level__play t-mono" href="' + esc(link) + '" target="_blank" rel="noopener" data-cursor="link">' + esc(tx(g.linkLabel) || 'Play ▶') + '</a>'
+        ? '<a class="g-level__play g-level__play--ghost t-mono" href="' + esc(link) + '" target="_blank" rel="noopener" data-cursor="link">' + esc(tx(g.linkLabel) || 'Play ▶') + '</a>'
         : (tx(g.linkLabel) ? '<span class="g-level__play g-level__play--soon t-mono">' + esc(tx(g.linkLabel)) + '</span>' : '');
       var study = /^case-[a-z0-9-]+\.html$/i.test(tx(g.caseStudy).trim())
-        ? '<a class="g-level__play g-level__play--study t-mono" href="' + esc(tx(g.caseStudy).trim()) + '" data-cursor="link">Read more →</a>' : '';
+        ? '<a class="g-level__play t-mono" href="' + esc(tx(g.caseStudy).trim()) + '" data-cursor="link">Read more →</a>' : '';
       var gh = safeUrl(g.github)
-        ? '<a class="g-level__play g-level__play--study g-level__play--gh t-mono" href="' + esc(safeUrl(g.github)) + '" target="_blank" rel="noopener" data-cursor="link">View on GitHub ↗</a>' : '';
-      action = '<div class="g-level__links">' + study + action + gh + '</div>';
+        ? '<a class="g-level__play g-level__play--ghost t-mono" href="' + esc(safeUrl(g.github)) + '" target="_blank" rel="noopener" data-cursor="link">View on GitHub ↗</a>' : '';
+      action = '<div class="g-level__links">' + study + gh + action + '</div>';
       var flip = notes.length ? '<button type="button" class="g-level__flip t-mono t-micro" data-cursor="link" aria-label="' + 'Show developer notes' + '"><span>' + 'Dev note' + '</span> ↻</button>' : '';
       var back = notes.length ? '<div class="g-level__face g-level__back" aria-hidden="true"><p class="g-level__num t-mono t-micro">LV ' + st + ' · ' + 'Design notes' + '</p><h3 class="g-level__title t-h3">' + title + '</h3>' +
         '<ol class="g-level__did">' + notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ol>' +

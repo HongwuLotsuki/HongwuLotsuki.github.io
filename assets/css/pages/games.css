@@ -654,7 +654,7 @@ html.js .g-hero__title.is-in { visibility: visible; animation: none; }
   transition: transform var(--dur-fast) var(--ease-snap), filter var(--dur-micro);
 }
 .g-level__play:hover { transform: translateX(4px); filter: brightness(1.1); }
-.g-level__play--study { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); clip-path: none; }
+.g-level__play--ghost { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); clip-path: none; }
 .g-level__flip,
 .g-level__close {
   padding: var(--sp-2) 0;
