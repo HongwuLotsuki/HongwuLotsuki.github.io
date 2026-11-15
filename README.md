@@ -10,7 +10,7 @@ Five game projects, each with its own case-study page:
 |---|---|---|
 | [Admission Desk](case-admission-desk.html) | Unity 6 | An admissions desk simulation inspired by *Papers, Please* |
 | [Project 403](case-project-403.html) | Unity 6 | A narrative adventure told through a 2D and a 3D cat perspective |
-| [RoadTrip](case-roadtrip.html) | Unreal Engine 5.6 | A driving and survival prototype with dice-based searching |
+| [RoadTrip](case-roadtrip.html) | Unreal Engine 5.8 | A driving and survival prototype with dice-based searching |
 | [Count Me Out](case-count-me-out.html) | Unity 6 | GMTK Game Jam 2026 entry, gameplay programming in a team of eight |
 | [Drowned in Yesterday](case-drowned-in-yesterday.html) | Unity 6 | CiGA Game Jam 2026 entry, all gameplay programming |
 

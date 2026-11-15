@@ -152,7 +152,7 @@ window.SITE_CONTENT = {
       "status": "Prototype",
       "genre": "Driving · exploration · light survival",
       "role": "Game design · level design · Blueprint",
-      "engine": "Unreal Engine 5.6",
+      "engine": "Unreal Engine 5.8",
       "year": "Sep 2026",
       "desc": "Drive an upgradeable RV between roadside stops, search for supplies, resolve random events with dice rolls and take on NPC requests. Inspired by Nomadland.",
       "tags": [
