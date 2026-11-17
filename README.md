@@ -16,16 +16,6 @@ Five game projects, each with its own case-study page:
 
 Pages: `index.html` (home), `games.html` (level-select gallery), `about.html`, `contact.html` and the five `case-*.html` pages.
 
-## Run it locally
-
-It is a plain static site with no build step. Either open `index.html` in a browser, or serve the folder:
-
-```bash
-node admin-server.js
-```
-
-Then open http://localhost:4173. The same command also serves a local-only admin panel at `/admin.html` for editing site content; it needs an `admin.config.json` file with a password and does not work on GitHub Pages.
-
 ## Credits
 
 - Site framework: the open-source *Inventory* portfolio template (MIT licence, see `LICENSE`), customised with my own content and case-study pages.
